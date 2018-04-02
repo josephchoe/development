@@ -2,9 +2,13 @@ FROM ubuntu:latest
 
 LABEL maintainer="joseph@josephchoe.com"
 
+WORKDIR /usr/local/src
+
 RUN apt-get clean && \
   apt-get -y update && \
   apt-get install -y \
+  ca-certificates \
+  curl \
   locales \
   git \
   vim && \
@@ -18,5 +22,4 @@ ENV TERM xterm-256color
 
 ADD .bash_profile /root/.bash_profile
 ADD .gitconfig /root/.gitconfig
-
-ENTRYPOINT ["/bin/bash", "-l"]
+ADD .vimrc /root/.vimrc
