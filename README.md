@@ -10,4 +10,4 @@
 
 ## Run new container with persisted storage volume
 
-docker run --volumes-from=development -v $(pwd):/usr/local/src -it --rm development bash -l
+    docker run --volumes-from=development -v $(pwd):/usr/local/src -it --rm development bash -l
