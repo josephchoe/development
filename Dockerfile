@@ -23,5 +23,3 @@ ENV TERM xterm-256color
 ADD .bash_profile /root/.bash_profile
 ADD .gitconfig /root/.gitconfig
 ADD .vimrc /root/.vimrc
-
-VOLUME /root/.vim
