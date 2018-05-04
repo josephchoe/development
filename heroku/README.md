@@ -13,3 +13,9 @@
     -v $(pwd):/usr/local/src \
     heroku \
     bash -l
+
+## Run heroku app
+
+    heroku login
+
+    heroku run bash -a app-name
