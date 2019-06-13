@@ -8,7 +8,9 @@ RUN apt-get clean && \
   apt-get -y update && \
   apt-get install -y \
   locales \
+  curl \
   git \
+  gnupg1 \
   vim \
   wget && \
   localedef -i en_US -f UTF-8 en_US.UTF-8
