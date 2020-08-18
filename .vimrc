@@ -7,7 +7,6 @@ endif
 call plug#begin('~/.vim/bundle')
 Plug 'itchyny/lightline.vim'
 Plug 'altercation/vim-colors-solarized'
-Plug 'ElmCast/elm-vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'itchyny/vim-gitbranch'
 Plug 'ctrlpvim/ctrlp.vim'
