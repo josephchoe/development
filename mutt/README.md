@@ -7,7 +7,6 @@
 ## Run new container
 
     docker run -it --rm \
-    -e GMAIL=???@gmail.com \
-    -e GMAIL_PASS -e GMAIL_FROM \
+    -e GMAIL=jchoey \
     --name mutt \
     mutt
