@@ -11,3 +11,7 @@
     -v $(pwd):/usr/local/src \
     development \
     bash -l
+
+## Shell Font
+
+DejaVu Sans Mono for Powerline 12 pt.
