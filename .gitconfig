@@ -1,3 +1,6 @@
 [user]
 	name = Joseph Choe
 	email = joseph@josephchoe.com
+	signingkey = 0F908B77DDBCADBF
+[gpg]
+	program = gpg
