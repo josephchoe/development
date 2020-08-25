@@ -31,16 +31,36 @@ let g:lightline = {
     \             [ 'filename', 'gitbranch', 'modified', ] ],
     \   'right': [ [ 'lineinfo' ],
     \              [ 'percent' ],
-    \              [ 'filetype', ] ]
+    \              [ 'fileformat', 'fileencoding', 'filetype', ] ]
     \ },
     \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
     \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
     \ 'component': {
     \ },
     \ 'component_function': {
-    \   'gitbranch': 'gitbranch#name'
+    \   'gitbranch': 'gitbranch#name',
+    \   'fileencoding': 'LightlineFileEncoding',
+    \   'filename': 'LightlineFileName',
+    \   'fileformat': 'LightlineFileFormat',
     \ },
     \ }
 
 filetype plugin indent on
 syntax on
+
+function! LightlineFileName()
+  let filename = expand('%:t') !=# '' ? fnamemodify(expand("%"), ":~:.") : ''
+  return filename
+endfunction
+
+function! LightlineFileEncoding()
+  " only show the file encoding if it's not 'utf-8'
+  let encoding = &fileencoding == 'utf-8' ? '' : &fileencoding
+  return encoding
+endfunction
+
+function! LightlineFileFormat()
+  " only show the file format if it's not 'unix'
+  let format = &fileformat == 'unix' ? '' : &fileformat
+  return format
+endfunction
