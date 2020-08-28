@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+passopt=(
+  --mount "type=bind,src=$(pwd),dst=/apps"
+  --workdir /apps
+)
+
+if [[ -n ${PROJECT_HOME+x} && -n ${MOUNT_DIR+x} ]]; then
+  passopt+=(--mount "type=bind,src=$PROJECT_HOME,dst=$MOUNT_DIR")
+fi
+
+if [ -n "$ENV_FILE" ]; then
+  passopt+=(--env-file $ENV_FILE)
+fi
+
+docker run -it --rm \
+  "${passopt[@]}" \
+  hashicorp/packer "$@"

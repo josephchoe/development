@@ -1,8 +1,8 @@
 DEVELOPMENT=${HOME}/workspace/development
 
-.PHONY: all bash git inputrc sqitch tmux vim
+.PHONY: all bash git hashicorp inputrc sqitch tmux vim
 
-all: bash git inputrc sqitch tmux vim
+all: bash git hashicorp inputrc sqitch tmux vim
 
 bash:
 	rm ~/.bash_profile
@@ -15,6 +15,14 @@ git:
 inputrc:
 	rm ~/.inputrc
 	ln -s ${DEVELOPMENT}/.inputrc ~/.inputrc
+
+hashicorp:
+	rm /usr/local/bin/packer
+	rm /usr/local/bin/terraform
+	rm /usr/local/bin/terragrunt
+	ln -s ${DEVELOPMENT}/hashicorp/packer /usr/local/bin/packer
+	ln -s ${DEVELOPMENT}/hashicorp/terraform /usr/local/bin/terraform
+	ln -s ${DEVELOPMENT}/hashicorp/terragrunt /usr/local/bin/terragrunt
 
 sqitch:
 	rm /usr/local/bin/sqitch

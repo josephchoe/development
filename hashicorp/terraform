@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+passopt=(
+)
+
+present_working_directory=$(pwd)
+
+if [ -z ${PROJECT_HOME+x} ]; then
+  echo "PROJECT_HOME must be set... exiting"
+  exit 1
+fi
+
+if [ ! -d "$PROJECT_HOME" ]; then
+  echo "$PROJECT_HOME does not exist... exiting"
+  exit 1
+fi
+
+passopt+=(--mount "type=bind,src=$PROJECT_HOME,dst=/apps")
+passopt+=(--workdir "/apps${present_working_directory#"$PROJECT_HOME"}")
+
+if [ -n "$ENV_FILE" ]; then
+  passopt+=(--env-file $ENV_FILE)
+fi
+
+docker run -it --rm \
+  "${passopt[@]}" \
+  alpine/terragrunt \
+  terraform "$@"
