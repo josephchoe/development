@@ -1,8 +1,12 @@
 DEVELOPMENT=${HOME}/workspace/development
 
-.PHONY: all bash git hashicorp inputrc sqitch tmux vim
+.PHONY: all atom bash git hashicorp inputrc sqitch tmux vim
 
-all: bash git hashicorp inputrc sqitch tmux vim
+all: atom bash git hashicorp inputrc sqitch tmux vim
+
+atom:
+	rm ~/.atom/styles.less
+	ln -s ${DEVELOPMENT}/atom/styles.less ~/.bash_profile
 
 bash:
 	rm ~/.bash_profile
