@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+passopt=(
+  --mount "type=bind,src=$(pwd),dst=/ansible"
+)
+
+if [ -n "$ANSIBLE_SSH_KNOWN_HOSTS" ]; then
+  passopt+=(--mount "type=bind,src=$ANSIBLE_SSH_KNOWN_HOSTS,dst=/root/.ssh/known_hosts")
+fi
+
+if [ -n "$ANSIBLE_SSH_KEY" ]; then
+  passopt+=(--mount "type=bind,src=$ANSIBLE_SSH_KEY,dst=/root/.ssh/id_rsa")
+fi
+
+docker run -it --rm \
+  "${passopt[@]}" \
+  willhallonline/ansible \
+  ansible "$@"

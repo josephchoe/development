@@ -1,8 +1,14 @@
 DEVELOPMENT=${HOME}/workspace/development
 
-.PHONY: all atom bash git hashicorp inputrc sqitch tmux vim
+.PHONY: all ansible atom bash git hashicorp inputrc sqitch tmux vim
 
-all: atom bash git hashicorp inputrc sqitch tmux vim
+all: ansible atom bash git hashicorp inputrc sqitch tmux vim
+
+ansible:
+	rm /usr/local/bin/ansible
+	rm /usr/local/bin/ansible-playbook
+	ln -s ${DEVELOPMENT}/ansible/ansible /usr/local/bin/ansible
+	ln -s ${DEVELOPMENT}/ansible/ansible-playbook /usr/local/bin/ansible-playbook
 
 atom:
 	rm ~/.atom/styles.less
