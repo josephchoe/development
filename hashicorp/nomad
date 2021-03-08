@@ -16,4 +16,4 @@ done
 
 docker run -it --rm \
   "${passopt[@]}" \
-  djenriquez/nomad "$@"
+  multani/nomad "$@"
