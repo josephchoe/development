@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+passopt=(
+  --mount "type=bind,src=$(pwd),dst=/apps"
+  --workdir /apps
+)
+
+# Iterate over optional Nomad variables.
+for var in \
+    NOMAD_ADDR
+do
+    if [ -n "${!var}" ]; then
+       passopt+=(-e $var)
+    fi
+done
+
+docker run -it --rm \
+  "${passopt[@]}" \
+  djenriquez/nomad "$@"

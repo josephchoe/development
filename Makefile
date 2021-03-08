@@ -21,9 +21,11 @@ inputrc:
 	ln -s ${DEVELOPMENT}/.inputrc ~/.inputrc
 
 hashicorp:
+	rm /usr/local/bin/nomad
 	rm /usr/local/bin/packer
 	rm /usr/local/bin/terraform
 	rm /usr/local/bin/terragrunt
+	ln -s ${DEVELOPMENT}/hashicorp/nomad /usr/local/bin/nomad
 	ln -s ${DEVELOPMENT}/hashicorp/packer /usr/local/bin/packer
 	ln -s ${DEVELOPMENT}/hashicorp/terraform /usr/local/bin/terraform
 	ln -s ${DEVELOPMENT}/hashicorp/terragrunt /usr/local/bin/terragrunt
